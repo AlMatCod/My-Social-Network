@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простая социальная сеть</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .post {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Приветствуем в Алмасайт!</h1>
+    </header>
+    <div class="container">
+        <form id="postForm">
+            <textarea id="postText" placeholder="Напишите что-то..."></textarea>
+            <button type="submit">Опубликовать</button>
+        </form>
+        <div id="postList"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const postForm = document.getElementById('postForm');
+            const postText = document.getElementById('postText');
+            const postList = document.getElementById('postList');
+
+            postForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const text = postText.value.trim();
+                if (text !== '') {
+                    const post = document.createElement('div');
+                    post.classList.add('post');
+                    post.textContent = text;
+                    postList.appendChild(post);
+                    postText.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
